@@ -28,7 +28,7 @@ function parseAndSave(text) {
       records.push(record);
     }
   });
-  console.log(records);
+  //  console.log(records);
 }
 
 // `provideYearData(year)` is a function that receives a year and returns an array of data object corresponding to that year.
@@ -59,7 +59,7 @@ function provideYearData(year) {
       }
     }
   });
-  console.log(yearData);
+  //  console.log(yearData);
   return yearData;
 }
 
@@ -89,7 +89,7 @@ function provideChartData(name, gender) {
     });
   // This is just a reference for the return value's format. Delete this and fill your own
   // proper code to return the correct data.
-  console.log(chartData);
+  //  console.log(chartData);
   return chartData;
 }
 
@@ -105,7 +105,7 @@ function handleSignUpFormSubmit(form) {
   let message1 = null;
   let message2 = null;
   let message3 = null;
-  letmessage4 = null;
+  let message4 = null;
   if (!form['first-name'].value.match(/^[A-Z][a-z]+$/)) {
     message1 = 'Invalid first name';
     valid1 = false;
@@ -125,7 +125,7 @@ function handleSignUpFormSubmit(form) {
     !form['date-of-birth'].value.match(/^\d{4}-\d{2}-\d{2}$/) ||
     parseInt(form['date-of-birth'].value.split('-')[0]) > 2020 ||
     parseInt(form['date-of-birth'].value.split('-')[0]) < 1900 ||
-    parseInt(form['date-of-birth'].value.split('-')[1]) > 13 ||
+    parseInt(form['date-of-birth'].value.split('-')[1]) > 12 ||
     parseInt(form['date-of-birth'].value.split('-')[1]) < 1 ||
     parseInt(form['date-of-birth'].value.split('-')[2]) < 1 ||
     parseInt(form['date-of-birth'].value.split('-')[2]) > 31
