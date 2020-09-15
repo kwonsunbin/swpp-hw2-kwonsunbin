@@ -42,24 +42,45 @@ function parseAndSave(text) {
 function provideYearData(year) {
   // TODO: Fill in this function. (5 points)
   let = yearData = [];
-  for (var i = 1; i < 1001; i++) {
-    yearData.push({ rank: i });
-  }
   // This is just a reference for the return value's format. Delete this and fill your own
   // proper code to return the correct data.
   records.map((record) => {
     if (record.year === year) {
-      if (record.gender === 'M') {
-        yearData[record.rank - 1].male = record.name;
-        yearData[record.rank - 1].maleRankChange = record.rankChange;
+      if (yearData.filter((data) => data.rank === record.rank).length === 0) {
+        yearData.push({ rank: record.rank });
       }
+
+      if (record.gender === 'M') {
+        yearData[
+          yearData.indexOf(
+            yearData.filter((data) => data.rank === record.rank)[0]
+          )
+        ].male = record.name;
+        yearData[
+          yearData.indexOf(
+            yearData.filter((data) => data.rank === record.rank)[0]
+          )
+        ].maleRankChange = record.rankChange;
+      }
+
       if (record.gender === 'F') {
-        yearData[record.rank - 1].female = record.name;
-        yearData[record.rank - 1].femaleRankChange = record.rankChange;
+        yearData[
+          yearData.indexOf(
+            yearData.filter((data) => data.rank === record.rank)[0]
+          )
+        ].female = record.name;
+        yearData[
+          yearData.indexOf(
+            yearData.filter((data) => data.rank === record.rank)[0]
+          )
+        ].femaleRankChange = record.rankChange;
       }
     }
   });
-  //  console.log(yearData);
+  yearData.sort(function (a, b) {
+    return a.rank - b.rank;
+  });
+  //console.log(yearData);
   return yearData;
 }
 
@@ -89,7 +110,11 @@ function provideChartData(name, gender) {
     });
   // This is just a reference for the return value's format. Delete this and fill your own
   // proper code to return the correct data.
-  //  console.log(chartData);
+
+  chartData.sort(function (a, b) {
+    return a.year - b.year;
+  });
+  //console.log(chartData);
   return chartData;
 }
 
